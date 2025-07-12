@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✨📦 Dream Resell 📦✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle, #1c1c1c, #0f0f0f);
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffc439;
+    }
+    .container {
+      padding: 2rem;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      animation: fadeIn 0.7s ease;
+    }
+    .container.hidden {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #f0f0f0;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .vendors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .vendor-card {
+      background: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.08);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .vendor-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(255, 255, 255, 0.12);
+    }
+    .vendor-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .vendor-card:hover .vendor-logo {
+      transform: scale(1.1);
+    }
+    .vendor-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .vendor-price {
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+    .paypal-button {
+      background: linear-gradient(to right, #ffd400, #ff9900);
+      border: none;
+      color: #111;
+      font-weight: bold;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .paypal-button:hover {
+      background: #ffc107;
+    }
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      z-index: 9999;
+      color: #fff;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinks = document.querySelectorAll("nav a");
+      const containers = document.querySelectorAll(".container");
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", e => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").replace("#", "");
+          containers.forEach(container => container.classList.add("hidden"));
+          const target = document.getElementById(targetId);
+          if (target) {
+            setTimeout(() => {
+              containers.forEach(c => c.style.display = "none");
+              target.style.display = "block";
+              setTimeout(() => target.classList.remove("hidden"), 10);
+            }, 300);
+          }
+        });
+      });
+
+      containers.forEach(c => c.style.display = "none");
+      const defaultView = document.getElementById("home");
+      if (defaultView) defaultView.style.display = "block";
+
+      for (let i = 0; i < 40; i++) {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowflake.style.left = Math.random() * window.innerWidth + "px";
+        snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+        snowflake.style.animationDuration = Math.random() * 5 + 5 + "s";
+        snowflake.textContent = "❄";
+        document.body.appendChild(snowflake);
+      }
+
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', () => {
+          setTimeout(() => alert('Redirecting to PayPal...'), 100);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">✨📦 Dream Resell 📦✨</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#vendors">Vendors</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container" id="home">
+    <h1>Welcome to ✨📦 Dream Resell 📦✨</h1>
+    <p style="text-align:center; color:#ccc;">Luxury items, real vendors, instant checkout.</p>
+  </div>
+
+  <div class="container" id="vendors">
+    <h1>✨ Our Dream Vendors 📦</h1>
+    <div class="vendors-grid">
+      <div class="vendor-card">
+        <img src="https://images.unsplash.com/photo-1611078489935-bce8ed8f83fc" alt="Dyson" class="vendor-logo" />
+        <div class="vendor-name">Dyson</div>
+        
+<div class="vendor-card">
+  <img src="https://images.unsplash.com/photo-1611078489935-bce8ed8f83fc" alt="Designer Belt" class="vendor-logo" />
+  <div class="vendor-name">Designer Belt</div>
+  <div class="vendor-price">$10.99</div>
+  <a href="https://buy.stripe.com/test_5kQ14g7DX6kGeCz86P5Rm00" class="paypal-button" target="_blank" style="display:block; margin-bottom: 0.5rem;">Buy with Stripe</a>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="mikeycoleman368@gmail.com">
+    <input type="hidden" name="item_name" value="Designer Belt Vendor">
+    <input type="hidden" name="amount" value="10.99">
+    <input type="hidden" name="currency_code" value="USD">
+    <button type="submit" class="paypal-button">Buy with PayPal</button>
+  </form>
+</div>
+
+<div class="vendor-card">
+  <img src="https://images.unsplash.com/photo-1611078489922-92a0cb3a6a57" alt="AirPods Max" class="vendor-logo" />
+  <div class="vendor-name">AirPods Max</div>
+  <div class="vendor-price">$45.00</div>
+  <a href="https://buy.stripe.com/test_4gM14g7DX5gC2TR3Qz5Rm01" class="paypal-button" target="_blank" style="display:block; margin-bottom: 0.5rem;">Buy with Stripe</a>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="mikeycoleman368@gmail.com">
+    <input type="hidden" name="item_name" value="AirPods Max Vendor">
+    <input type="hidden" name="amount" value="45.00">
+    <input type="hidden" name="currency_code" value="USD">
+    <button type="submit" class="paypal-button">Buy with PayPal</button>
+  </form>
+</div>
+
+<div class="vendor-card">
+  <img src="https://images.unsplash.com/photo-1611078489935-61dbb19f5fe1" alt="AirPods Pro 2nd Gen" class="vendor-logo" />
+  <div class="vendor-name">AirPods Pro (2nd Gen)</div>
+  <div class="vendor-price">$25.00</div>
+  <a href="https://buy.stripe.com/test_00w14g7DX4cyeCzbj15Rm02" class="paypal-button" target="_blank" style="display:block; margin-bottom: 0.5rem;">Buy with Stripe</a>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="mikeycoleman368@gmail.com">
+    <input type="hidden" name="item_name" value="AirPods Pro 2nd Gen Vendor">
+    <input type="hidden" name="amount" value="25.00">
+    <input type="hidden" name="currency_code" value="USD">
+    <button type="submit" class="paypal-button">Buy with PayPal</button>
+  </form>
+</div>
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="mikeycoleman368@gmail.com">
+          <input type="hidden" name="item_name" value="Dyson Vendor">
+          <input type="hidden" name="amount" value="9.99">
+          <input type="hidden" name="currency_code" value="USD">
+          <button type="submit" class="paypal-button">Buy with PayPal</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container hidden" id="contact">
+    <h1>Contact Us</h1>
+    <form style="max-width: 400px; margin: auto;">
+      <label for="name">Name</label><br/>
+      <input type="text" id="name" name="name" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"/>
+      <label for="email">Email</label><br/>
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"/>
+      <label for="message">Message</label><br/>
+      <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.5rem;"></textarea><br/>
+      <button type="submit" class="paypal-button" style="margin-top: 1rem;">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 ✨📦 Dream Resell. All rights reserved.
+  </footer>
+</body>
+</html>
